@@ -6,17 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.m7detail.clientecarro.cliente.domain.Cliente;
+
 @SpringBootApplication
 @RestController
 @RequestMapping("/")
 public class ClienteCarroApplication {
-	
-	
+
 	@GetMapping
 	public String getHomeTeste() {
-		return "Cliente Carro - API Home"; 
+		return "Cliente Carro - API Home";
 	}
-	
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClienteCarroApplication.class, args);
