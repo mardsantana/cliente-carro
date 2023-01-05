@@ -30,3 +30,4 @@ public interface ClienteAPI {
 	ClienteDetalhadoResponse getClienteAtravesId(@PathVariable UUID idCliente);
 
 }
+
