@@ -1,13 +1,14 @@
 package br.com.m7detail.clientecarro.cliente.infra;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.m7detail.clientecarro.cliente.application.repository.ClienteRepository;
 import br.com.m7detail.clientecarro.cliente.domain.Cliente;
+import br.com.m7detail.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -34,9 +35,10 @@ public class ClienteInfraRepository implements ClienteRepository {
 	public Cliente buscaClienteAtravesId(UUID idCliente) {
 		log.info("[inicia] ClienteInfraRepository - buscaClienteAtravesId");
 		Cliente cliente = clienteSpringDataJPARepository.findById(idCliente)
-				.orElseThrow(() -> new RuntimeException("Cliente não Encontrado!!"));
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Cliente não ecnontrado!!"));
 		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravesId");
 		return cliente;
 	}
 
+	
 }
