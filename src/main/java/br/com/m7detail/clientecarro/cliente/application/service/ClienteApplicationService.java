@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.m7detail.clientecarro.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.m7detail.clientecarro.cliente.application.api.ClienteDetalhadoResponse;
 import br.com.m7detail.clientecarro.cliente.application.api.ClienteListResponse;
 import br.com.m7detail.clientecarro.cliente.application.api.ClienteRequest;
@@ -26,9 +27,7 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[inicia] ClienteApplicationService - criaCliente");
 		Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
 		log.info("[finaliza] ClienteApplicationService - criaCliente");
-		return ClienteResponse.builder()
-				.idCliente(cliente.getIdCliente())
-				.build();
+		return ClienteResponse.builder().idCliente(cliente.getIdCliente()).build();
 	}
 
 	@Override
@@ -53,8 +52,17 @@ public class ClienteApplicationService implements ClienteService {
 		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
 		clienteRepository.deletaCliente(cliente);
 		log.info("[finaliza] ClienteApplicationService - deletaClienteAtravesId");
-		
-		
+
+	}
+
+	@Override
+	public void patchAlteraCliente(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		log.info("[inicia] ClienteApplicationService - patchAlteraCliente");
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		cliente.altera(clienteAlteracaoRequest);
+    	clienteRepository.salva(cliente);
+		log.info("[finaliza] ClienteApplicationService - patchAlteraCliente");
+
 	}
 
 }
