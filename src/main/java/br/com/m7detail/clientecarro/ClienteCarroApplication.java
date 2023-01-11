@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.m7detail.clientecarro.cliente.domain.Cliente;
-
 @SpringBootApplication
 @RestController
 @RequestMapping("/")

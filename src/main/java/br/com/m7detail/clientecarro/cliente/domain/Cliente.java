@@ -9,6 +9,8 @@ import br.com.m7detail.clientecarro.cliente.application.api.ClienteAlteracaoRequ
 import br.com.m7detail.clientecarro.cliente.application.api.ClienteRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,6 +37,7 @@ public class Cliente {
 	private String email;
 	@NotBlank
 	private String celular;
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@CPF
 	@Column(unique = true)
