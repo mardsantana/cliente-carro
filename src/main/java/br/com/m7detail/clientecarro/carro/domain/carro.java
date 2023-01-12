@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
-public class carro {
+public class Carro {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
