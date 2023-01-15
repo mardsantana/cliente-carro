@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,9 +27,9 @@ public class Carro {
 	private String modeloCarro;
 	@NotBlank
 	private Porte porte;
-	@NotBlank
+	@NotNull
 	@Column(unique = true)
-	private String placaCarro;
+	private Integer placaCarro;
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
